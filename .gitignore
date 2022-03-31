@@ -2,3 +2,11 @@ dataset/localCopy/*
 stemmers/*
 
 idea*
+*.csv
+*.tsv
+**/*.ipynb_checkpoints/
+
+
+#word embedding
+**/full_uni_*.mdl*
+**/full_uni_*.zip
