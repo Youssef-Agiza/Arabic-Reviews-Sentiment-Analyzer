@@ -42,43 +42,44 @@ class Sample(db.Model):
 
 
 if __name__ == "__main__":
-    # samples= Sample.query.all()
-    # print(type(samples[0].label))
+    samples= Sample.query.all()
+    print(len(samples))
+    print(samples[-1].text)
 
-    db.session.get
-    t = time()
+    # db.session.get
+    # t = time()
 
-    #Create the database
-    engine = create_engine('sqlite:///data.db')
-    db.metadata.create_all(engine)
+    # #Create the database
+    # engine = create_engine('sqlite:///data.db')
+    # db.metadata.create_all(engine)
 
-    #Create the session
-    session = sessionmaker()
-    session.configure(bind=engine)
-    s = session()
+    # #Create the session
+    # session = sessionmaker()
+    # session.configure(bind=engine)
+    # s = session()
 
-    try:
-        file_name = "cleanedText.csv" #sample CSV file used:  http://www.google.com/finance/historical?q=NYSE%3AT&ei=W4ikVam8LYWjmAGjhoHACw&output=csv
-        # data = Load_Data(file_name) 
-        with open('cleanedText.csv','r') as fin: # `with` statement available in 2.5+
-            # csv.DictReader uses first line in file for column headings by default
-            dr = csv.DictReader(fin) # comma is default delimiter
-            to_db = [(i['label'], i['text']) for i in dr]
+    # try:
+    #     file_name = "cleanedText.csv" #sample CSV file used:  http://www.google.com/finance/historical?q=NYSE%3AT&ei=W4ikVam8LYWjmAGjhoHACw&output=csv
+    #     # data = Load_Data(file_name) 
+    #     with open('cleanedText.csv','r') as fin: # `with` statement available in 2.5+
+    #         # csv.DictReader uses first line in file for column headings by default
+    #         dr = csv.DictReader(fin) # comma is default delimiter
+    #         to_db = [(i['label'], i['text']) for i in dr]
 
-        for i in to_db:
-            # print(data)
-            # break
-            record = Sample(**{
-                'label':i[0],
-                'text':i[1]
-            })
-            # print(record, i)
-            # break
-            s.add(record) #Add all the records
+    #     for i in to_db:
+    #         # print(data)
+    #         # break
+    #         record = Sample(**{
+    #             'label':i[0],
+    #             'text':i[1]
+    #         })
+    #         # print(record, i)
+    #         # break
+    #         s.add(record) #Add all the records
 
-        s.commit() #Attempt to commit all the records
-    except:
-        s.rollback() #Rollback the changes on error
-    finally:
-        s.close() #Close the connection
-    print ("Time elapsed: " + str(time() - t) + " s.") #0.091s
+    #     s.commit() #Attempt to commit all the records
+    # except:
+    #     s.rollback() #Rollback the changes on error
+    # finally:
+    #     s.close() #Close the connection
+    # print ("Time elapsed: " + str(time() - t) + " s.") #0.091s

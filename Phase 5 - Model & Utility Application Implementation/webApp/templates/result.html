@@ -6,13 +6,14 @@
         <p>Your sentiment is</p>
         <p class="sentiment"> {{sentiment}}</p>
         <div>
-            <form action="/feedback" method="post">
+            <form action="/result" method="post">
                 <header>Is this result correct?</header>
 
                 <label for="yes">Yes</label>
                 <input type="radio" name="feedback" id="yes" value="yes"><br/>
                 <label for="no">No</label>
                 <input type="radio" name="feedback" id="no" value="no">
+                <button type="submit" class="submit-btn">Submit</button>
             </form>
         </div>
     </div>

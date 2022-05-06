@@ -30,9 +30,7 @@ class Preprocessor:
         result=self.normalize(result)
         result=self.remove_redundant_words(result)
 
-        if not self.vectorizer:
-            self.load_tfidf_vectorizer(vectorizer_path)
-        result=self.convert_to_tfidf(result)
+
 
         return result
 
@@ -47,6 +45,7 @@ class Preprocessor:
                 return False
         except:
                 return False
+        print("returning true")
         return True
 
     def stem(self,sentence):
