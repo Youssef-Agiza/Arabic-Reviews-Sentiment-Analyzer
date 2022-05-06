@@ -113,9 +113,15 @@ def index():
 
 @app.route('/result',methods=['POST','GET'])
 def result():
+        sentiment=session["sentiment"]
         if request.method=="POST": 
                 feedback=request.form["feedback"]
-                label= 1 if feedback=="yes" else 0
+                label= 0
+                if feedback=="yes":
+                        label= 1 if sentiment=="Positive" else 0
+                else:  
+                        label= 0 if sentiment=="Positive" else 1
+
                 sentence=session["sentence"]
 
                 new_sample=Sample(label=label,text=sentence)
@@ -128,7 +134,6 @@ def result():
                         return redirect("error.html",error=error)
 
         else:
-         sentiment=session["sentiment"]
          print(sentiment)
          return render_template("result.html",sentiment=sentiment)
 
