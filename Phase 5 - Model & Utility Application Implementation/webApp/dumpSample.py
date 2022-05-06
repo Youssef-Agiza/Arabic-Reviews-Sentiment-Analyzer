@@ -9,6 +9,8 @@ from sqlalchemy.orm import sessionmaker
 from flask import Flask, redirect, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
+import pandas as pd
+
 def Load_Data(file_name):
     data = genfromtxt(file_name, delimiter=',', skip_header=1, converters={0: lambda s: str(s)})
     print(data)
@@ -43,8 +45,12 @@ class Sample(db.Model):
 
 if __name__ == "__main__":
     samples= Sample.query.all()
-    print(len(samples))
-    print(samples[-1].text)
+    # print(len(samples))
+    # print(samples[-1])
+    cnx = create_engine('sqlite:///data.db').connect()
+    df=pd.read_sql_table("Sample",cnx)
+    print(df.head())
+    
 
     # db.session.get
     # t = time()

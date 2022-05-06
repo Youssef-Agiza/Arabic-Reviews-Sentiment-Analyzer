@@ -38,6 +38,7 @@ class Layer:
         self.n_output= n_output
         self.n_input= n_input
         self.name= name
+        self.reset_params()
         
         if activation == "identity":
             self.activation = self._identity
@@ -56,7 +57,7 @@ class Layer:
         
             
         
-        
+    def reset_params(self): 
         self.W= np.random.randn(self.n_output,self.n_input)*np.sqrt(2/self.n_input)
         self.b= np.random.randn(self.n_output,1)*np.sqrt(2/self.n_input)
 
@@ -65,6 +66,7 @@ class Layer:
         
         self.Z= None
         self.Ai = None
+
     def print_shapes(self):
         print("W: ",self.W.shape)
         print("b: ",self.b.shape)
@@ -160,6 +162,9 @@ class NN:
             self.loss=self._MSE
             self.loss_diff=self._diff_MSE
         
+    def reset_layers(self):
+        for layer in self.layers:
+            layer.reset_params()
     
  
     

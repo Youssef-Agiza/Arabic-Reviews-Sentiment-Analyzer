@@ -1,0 +1,20 @@
+{%extends 'base.html' %} {% block head%}
+<title>Sentiment Analysis</title>
+{%endblock%} {% block body%}
+<div class="content">
+    <div class="content-frame">
+        <h3 class="form-title">Press Retrain to re-train the model on the current stored data</h3>
+
+        {% if finished_training %}
+        <p>model is finished training on {{samples_count}} sample points</p>
+        {%else%}
+        <div class="form">
+            <form action="/active-learn" method="post">
+
+                <input type="submit" name="predict" class="submit-btn" value="Retrain" />
+            </form>
+        </div>
+        {%endif%}
+    </div>
+</div>
+{%endblock%}

@@ -18,6 +18,13 @@ class Preprocessor:
         self.vectorizer=pickle.load(file)
         file.close()
     
+    def save_tfidf_vectorizer(self,path):
+        if not self.vectorizer:
+            return None
+        file=open(path,"wb")
+        pickle.dump(file,self.vectorizer)
+        file.close()
+    
     def preprocess(self,sentence,vectorizer_path=""):
         if not self.vectorizer and vectorizer_path=="":
             return None
@@ -75,5 +82,4 @@ class Preprocessor:
         if not self.vectorizer:
             return None
         return self.vectorizer.transform([sentence])
-
 
