@@ -259,8 +259,9 @@ class NN:
 
     
     def predict(self,x_test): #data dim is NxD .. N no of examples.. D no of dimension
-#         print("x_test:", x_test.shape)
+        print("x_test:", x_test.shape)
         y_hat= self.forward(x_test.T).T
+        print("yhat: ",y_hat)
 #         return y_hat
         print(y_hat)
         y_hat[y_hat>0.5]=1

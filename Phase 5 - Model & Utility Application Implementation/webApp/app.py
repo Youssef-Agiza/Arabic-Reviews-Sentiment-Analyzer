@@ -72,12 +72,12 @@ def retrain(model,pp,df):
 
         # model.reset_layers()
         # print("optimizer: ",model.optimizer,model.optimizer.alpha)
-        nn_temp.fit(tf_x_train,Y_train,validation_data=[tf_x_val,Y_val],batch_size=32,epochs=20)
+        nn_temp.fit(tf_x_train,Y_train,validation_data=[tf_x_val,Y_val],batch_size=32,epochs=3)
         y_pred=nn_temp.predict(tf_x_test)
         print(np.unique(y_pred,return_counts=True))
         nn_temp.save_model(model_dump_file_path)
         with open(vectorizer_file_path,"wb") as f:
-                pickle.dump(list, f)
+                pickle.dump(vectorizer, f)
 
         #update global objects
         nn.load_model(model_dump_file_path)
@@ -97,11 +97,11 @@ def index():
 
                            
                     sentence=PP.preprocess(sentence)
-                    tfidf=PP.convert_to_tfidf(sentence)
 
+                    tfidf=PP.convert_to_tfidf(sentence)
+                    print("tfidf",tfidf)
                     prediction=nn.predict(tfidf)
                     sentiment= "Positive" if prediction[0][0]==1 else "Negative"
-
                     session["sentence"]=sentence
                     session["sentiment"]=sentiment
                     return redirect("/result")

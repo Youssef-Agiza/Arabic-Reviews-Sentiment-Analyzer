@@ -81,5 +81,6 @@ class Preprocessor:
     def convert_to_tfidf(self,sentence):
         if not self.vectorizer:
             return None
+        print(self.vectorizer)
         return self.vectorizer.transform([sentence])
 
