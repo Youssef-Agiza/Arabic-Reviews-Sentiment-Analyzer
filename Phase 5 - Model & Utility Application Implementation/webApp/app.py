@@ -1,14 +1,24 @@
 from flask import Flask, redirect, render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+
+# import sys 
+# sys.path.append(".")
+from Model import NN, Layer
+from Optimizer import AdamOptimizer
+from Preprocessor import Preprocessor
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///test.db'
 
 
 
-db=SQLAlchemy(app)
+nn=NN()
+nn.load_model("modelDump.joblib")
+PP=Preprocessor(vectorizer_path="tfidfVectorizerDump.joblib")
 
+
+db=SQLAlchemy(app)
 # class Todo(db.Model):
 #     id=db.Column(db.Integer,primary_key=True)
 #     content=db.Column(db.String(200),nullable=False)
@@ -20,7 +30,11 @@ db=SQLAlchemy(app)
 
 @app.route('/', methods=['POST','GET'])
 def index():
-        return render_template("index.html")
+        if request.method=="POST":
+                return "Predicting naaaaaw..."
+        else: 
+                return render_template("index.html")
+  
 
 
 if __name__ == "__main__":
