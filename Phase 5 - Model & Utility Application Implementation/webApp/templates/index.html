@@ -1,0 +1,16 @@
+{%extends 'base.html' %} {% block head%}
+<title>Sentiment Analysis</title>
+{%endblock%} {% block body%}
+<div class="content">
+    <div class="table-container">
+        <h1>Enter Arabic text</h1>
+
+        <div class="form">
+            <form action="/" method="post">
+                <input type="text" name="content" id="content" />
+                <input type="submit" name="predict" value="identify sentiment" />
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}
