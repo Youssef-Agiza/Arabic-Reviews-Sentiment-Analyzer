@@ -9,16 +9,24 @@ from Preprocessor import Preprocessor
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///data.db'
 
-
-
-nn=NN()
-nn.load_model("modelDump.joblib")
-PP=Preprocessor(vectorizer_path="tfidfVectorizerDump.joblib")
 
 
 db=SQLAlchemy(app)
+class Sample(db.Model):
+        id=db.Column(db.Integer,primary_key=True)
+        label=db.Column(db.Integer,nullable=False)
+        text=db.Column(db.String,nullable=False)
+        def __repr__(self):
+                return "<Sample %r>" %self.id
+
+
+
+# nn=NN()
+# nn.load_model("modelDump.joblib")
+# PP=Preprocessor(vectorizer_path="tfidfVectorizerDump.joblib")
+
 # class Todo(db.Model):
 #     id=db.Column(db.Integer,primary_key=True)
 #     content=db.Column(db.String(200),nullable=False)
@@ -31,7 +39,19 @@ db=SQLAlchemy(app)
 @app.route('/', methods=['POST','GET'])
 def index():
         if request.method=="POST":
-                return "Predicting naaaaaw..."
+                try:
+                    sentence=request.form["text"]
+                    if not PP.detect_lang(sentence):
+                           error="Language is not arabic"
+                           print("\n\n\n\n",error,"\n\n\n")
+                           return render_template("error.html",error=error)
+                    sentence=PP.preprocess(sentence)
+                    prediction=nn.predict(sentence)
+                    sentiment= "Positive" if prediction[0][0]==1 else "Negative"
+                    return render_template("result.html", sentiment=sentiment)
+                except:
+                        print("\n\nINSIDE ERRORRR\n\n\n")
+                        return "There was an error predicting your sentence"
         else: 
                 return render_template("index.html")
   

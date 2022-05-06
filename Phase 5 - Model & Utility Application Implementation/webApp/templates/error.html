@@ -1,0 +1,13 @@
+{%extends 'base.html' %} {% block head%}
+<title>Sentiment Analysis</title>
+{%endblock%} {% block body%}
+<div class="content">
+    <div class="content-frame">
+        <h1 class="form-title">There was an issue predicting your sentiment!</h1>
+        {% if error %}
+        <p>Error: {{error}}</p>
+        {%endif%}
+
+    </div>
+</div>
+{%endblock%}

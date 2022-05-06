@@ -1,0 +1,20 @@
+{%extends 'base.html' %} {% block head%}
+<title>Sentiment Analysis</title>
+{%endblock%} {% block body%}
+<div class="content">
+    <div class="content-frame">
+        <p>Your sentiment is</p>
+        <p class="sentiment"> {{sentiment}}</p>
+        <div>
+            <form action="/feedback" method="post">
+                <header>Is this result correct?</header>
+
+                <label for="yes">Yes</label>
+                <input type="radio" name="feedback" id="yes" value="yes"><br/>
+                <label for="no">No</label>
+                <input type="radio" name="feedback" id="no" value="no">
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}

@@ -2,13 +2,14 @@
 <title>Sentiment Analysis</title>
 {%endblock%} {% block body%}
 <div class="content">
-    <div class="table-container">
-        <h1>Enter Arabic text</h1>
+    <div class="content-frame">
+        <h1 class="form-title">Enter Text Sentiment Prediction</h1>
 
         <div class="form">
             <form action="/" method="post">
-                <input type="text" name="content" id="content" />
-                <input type="submit" name="predict" value="identify sentiment" />
+                <label>Enter text to predict its sentiment:</label><br/>
+                <input type="text" name="text" id="text" class="form-field" /><br/>
+                <input type="submit" name="predict" class="submit-btn" value="identify sentiment" />
             </form>
         </div>
     </div>

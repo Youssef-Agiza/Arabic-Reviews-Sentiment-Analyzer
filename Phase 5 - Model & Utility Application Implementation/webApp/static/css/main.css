@@ -1,5 +1,97 @@
+:root {
+    --primary: #FF4742;
+    /* --negative: rgb(49, 22, 17); */
+}
+
 .content {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+a {
+    color: #fff;
+}
+
+.content-frame {
+    background-color: #000000a8;
+    width: 600px;
+    height: 400px;
+    border-radius: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.sentiment {
+    font-weight: 700;
+    font-style: italic;
+    font-size: x-large;
+}
+
+.form-title {
+    color: #fff;
+}
+
+.form-field {
+    width: 500px;
+    height: 30px;
+}
+
+.submit-btn:hover,
+.submit-btn:active {
+    background-color: #fff;
+    background-position: 0 0;
+    color: #FF4742;
+}
+
+.submit-btn:active {
+    opacity: .5;
+}
+
+form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form>label {
+    margin-top: 10px;
+}
+
+.submit-btn {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    background: #FF4742;
+    border: 1px solid #FF4742;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    /* vertical-align: middle; */
+}
+
+body {
+    background-image: linear-gradient(to right, #8e2de2, #4a00e0);
+    font-family: sans-serif;
 }

@@ -39,7 +39,10 @@ class Preprocessor:
 
     def detect_lang(self,sentence):
         try:
+            print("\n\nhere\n\n")
             language = detect(sentence)
+            print("\n\nhere2\n\n")
+
             if language != 'ar':
                 return False
         except:
