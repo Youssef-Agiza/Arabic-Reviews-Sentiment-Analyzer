@@ -11,4 +11,6 @@ idea*
 **/full_uni_*.mdl*
 **/full_uni_*.zip
 
-
+submission/
+*.zip
+backup/
