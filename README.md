@@ -1,9 +1,10 @@
 # Arabic-Reviews-Sentiment-Analyzer
 A Neural Network model that predicts the sentiment(positive/negative) of arabic text achieving an accuracy of 83%. The dataset used to train the model is the [Arabic 100k reviews](https://www.kaggle.com/datasets/abedkhooli/arabic-100k-reviews) from Kaggle. The process of developing this model was divided on 5 phases, each has its own folder in the repo along with an attached report to explain what the phase includes.
 
-We also built a user interface using flask to be able to try the app.
+We also built a user interface using flask to be able to try the app. The app also takes the user's feedback on the prediction and uses it in online learning to improve the predictions.
 
-
+![home page](https://github.com/Youssef-Agiza/Arabic-Reviews-Sentiment-Analyzer/blob/master/screenshots%20and%20demo/home.png)
+![result page](https://github.com/Youssef-Agiza/Arabic-Reviews-Sentiment-Analyzer/blob/master/screenshots%20and%20demo/result_feedback.png)
 
 ## Prerequisite to run the web app:
 - Having python3
